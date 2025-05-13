@@ -50,7 +50,7 @@ const TrialBalance = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch(`${process.env.VITE_REACT_APP_BACKEND_URL}/api/users`);
+      const response = await fetch(`VITE_REACT_APP_BACKEND_URL/api/users`);
       if (response.ok) {
         const data = await response.json();
         setUsers(data);
