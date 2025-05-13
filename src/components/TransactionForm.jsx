@@ -12,22 +12,15 @@ const TransactionForm = ({
   userSuggestions,
   onUserSelect,
   onAddNewUser,
-  onEnterPress,
 }) => {
   const isCredit = type === 'credit';
   const title = isCredit ? 'Credit From' : 'Debit Form';
   const accountLabel = isCredit ? 'Received from :' : 'Paid to :';
   const accountField = isCredit ? 'receivedFrom' : 'paidTo';
 
-  const handleKeyDown = (e, fieldName) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      onEnterPress(type, fieldName);
-    }
-  };
-
   return (
     <div className="bg-white rounded-lg shadow-sm p-2">
+      {/* <h3 className="text-xl font-medium mb-3">{title}</h3> */}
       <div className="space-y-3">
         {isCredit && (
           <div className="flex items-center gap-4 relative">
@@ -36,7 +29,6 @@ const TransactionForm = ({
                 type="date"
                 value={currentDate}
                 onChange={onDateChange}
-                onKeyDown={(e) => handleKeyDown(e, 'date')}
                 className="border rounded px-3 py-1 w-full pr-10"
               />
               <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5 pointer-events-none" />
@@ -49,7 +41,6 @@ const TransactionForm = ({
             name={accountField}
             value={formData[accountField]}
             onChange={(e) => onInputChange(type, e)}
-            onKeyDown={(e) => handleKeyDown(e, accountField)}
             showSuggestions={showSuggestions}
             userSuggestions={userSuggestions}
             onUserSelect={onUserSelect}
@@ -64,7 +55,6 @@ const TransactionForm = ({
               name="narration"
               value={formData.narration}
               onChange={(e) => onInputChange(type, e)}
-              onKeyDown={(e) => handleKeyDown(e, 'narration')}
               className="border rounded px-3 py-1 w-full"
             />
           </div>
@@ -77,7 +67,6 @@ const TransactionForm = ({
               name="amount"
               value={formData.amount}
               onChange={(e) => onInputChange(type, e)}
-              onKeyDown={(e) => handleKeyDown(e, 'amount')}
               placeholder="0"
               className="border rounded px-3 py-1 w-full"
             />
@@ -91,7 +80,6 @@ const TransactionForm = ({
               name="expenses"
               value={formData.expenses}
               onChange={(e) => onInputChange(type, e)}
-              onKeyDown={(e) => handleKeyDown(e, 'expenses')}
               className="border rounded px-3 py-1 w-full"
             />
           </div>

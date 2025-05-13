@@ -17,7 +17,7 @@ const DayBook = () => {
 
   const fetchTransactions = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/transactions');
+      const response = await fetch(`${process.env.VITE_REACT_APP_BACKEND_URL}/api/transactions`);
       if (response.ok) {
         const data = await response.json();
         const combinedTransactions = data.map(transaction => ({

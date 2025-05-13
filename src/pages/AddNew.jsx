@@ -20,7 +20,7 @@ const AddNew = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/users');
+      const response = await fetch(`VITE_REACT_APP_BACKEND_URL}/api/users`);
       if (response.ok) {
         const data = await response.json();
         setUsers(data);
@@ -40,7 +40,8 @@ const AddNew = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/api/users', {
+// VITE_API_URL=
+      const response = await fetch('https://money-backend-ydj6.onrender.com/api/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,7 +76,7 @@ const AddNew = () => {
         return;
       }
 
-      const response = await fetch(`http://localhost:5000/api/users/${userId}`, {
+      const response = await fetch('https://money-backend-ydj6.onrender.com/api/users/${userId}', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'

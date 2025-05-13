@@ -17,7 +17,7 @@ const TrialBalance = () => {
 
   const fetchTransactions = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/transactions');
+      const response = await fetch(`${process.env.VITE_REACT_APP_BACKEND_URL}/api/transactions`);
       if (response.ok) {
         const data = await response.json();
         setTransactions(data);
@@ -50,7 +50,7 @@ const TrialBalance = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/users');
+      const response = await fetch(`${process.env.VITE_REACT_APP_BACKEND_URL}/api/users`);
       if (response.ok) {
         const data = await response.json();
         setUsers(data);
