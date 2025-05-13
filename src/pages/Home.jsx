@@ -29,7 +29,7 @@ const Home = () => {
   }, []);
   const fetchTransactions = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/transactions');
+      const response = await fetch('VITE_REACT_APP_BACKEND_URL/api/transactions');
       if (response.ok) {
         const data = await response.json();
         if (data[0]?.creditEntry) {
@@ -62,7 +62,7 @@ const Home = () => {
   };
   const fetchUsers = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/users');
+      const response = await fetch('VITE_REACT_APP_BACKEND_URL/api/users');
       if (response.ok) {
         const data = await response.json();
         setUsers(data);
@@ -157,7 +157,7 @@ const Home = () => {
           vnNo
         };
   
-        const response = await fetch('http://localhost:5000/api/transactions', {
+        const response = await fetch('VITE_REACT_APP_BACKEND_URL/api/transactions', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -194,7 +194,7 @@ const Home = () => {
   };
   const handleDelete = async (selectedIds) => {
     try {
-      const response = await fetch('http://localhost:5000/api/transactions', {
+      const response = await fetch('VITE_REACT_APP_BACKEND_URL/api/transactions', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
